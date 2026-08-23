@@ -253,6 +253,13 @@ table.leaderboard-table tr.you-row{background:var(--primary-soft);}
 .stat-tile .stat-num{font-size:1.35rem;font-weight:900;color:var(--primary-dark);line-height:1.2;}
 .stat-tile .stat-label{font-size:.72rem;color:var(--text-muted);font-weight:700;margin-top:2px;}
 table.history-table td{font-size:.9rem;}
+/* LINE OA unlock-request card (pending-approval screen) */
+.line-unlock-card{border:2px solid #06C755;background:#f2fdf6;}
+.line-unlock-card h2{margin-top:0;font-size:1.05rem;}
+.line-qr-wrap{display:flex;justify-content:center;padding:14px 0 4px;}
+.line-qr-img{width:200px;height:200px;background:#fff;padding:10px;border-radius:12px;border:1px solid var(--border);}
+.line-add-btn{background:#06C755;color:#fff;font-weight:800;padding:11px 26px;border-radius:999px;text-decoration:none;display:inline-block;}
+.line-add-btn:hover{background:#05a648;}
 /* Auth (login/register) screen */
 .auth-tabs{display:flex;gap:6px;margin-bottom:16px;border-bottom:2px solid var(--border);}
 .auth-tab{padding:9px 18px;font-weight:800;font-size:.92rem;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
@@ -322,6 +329,10 @@ footer.foot::before{content:'🎯 ';}
 var RAW = JSON.parse(document.getElementById('data-holder').textContent);
 var DEMO = RAW.demo;               // ~30 free sample questions, WITH answers embedded (public by design)
 var SUBJECT_META = RAW.subjectMeta; // [{subject,subjectTitle,count}] describing the FULL bank, for marketing copy
+
+// ---- LINE OA (add-friend) for payment-approval unlock requests ----
+var LINE_OA_URL = 'https://line.me/R/ti/p/%40763nnhab';
+var LINE_OA_QR_DATA_URI = 'data:image/png;base64,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';
 
 var app = document.getElementById('app');
 var exitBtn = document.getElementById('exitBtn');
@@ -659,11 +670,16 @@ function renderPendingApproval(){
   var html = '<div class="card">';
   html += '<h1>✅ สมัครสมาชิกสำเร็จ!</h1>';
   html += '<p class="lead">บัญชี <b>'+escapeHtml(auth.username)+'</b> ถูกสร้างเรียบร้อยแล้ว แต่ยังใช้งานคลังข้อสอบเต็มไม่ได้ทันที — ต้องรอผู้ดูแลระบบยืนยันการชำระเงินก่อน</p>';
-  html += '<div class="compare-box guest">';
-  html += '<div class="compare-line">📌 ขั้นตอนถัดไป: ชำระเงินตามช่องทางที่ผู้ขายแจ้งไว้ แล้วแจ้งชื่อผู้ใช้ของคุณ (<b>'+escapeHtml(auth.username)+'</b>) ให้ผู้ขายทราบ เมื่อได้รับการอนุมัติแล้วสามารถกลับมา "เข้าสู่ระบบ" ด้วยชื่อผู้ใช้และรหัสผ่านเดิมได้ทันที</div>';
-  html += '</div>';
   html += '<div class="start-bar" style="justify-content:flex-start;">';
   html += '<button class="btn primary" id="tryLoginAgainBtn">🔄 ลองเข้าสู่ระบบอีกครั้ง</button>';
+  html += '</div></div>';
+
+  html += '<div class="card line-unlock-card">';
+  html += '<h2>📌 ขั้นตอนต่อไป: แอดไลน์เพื่อแจ้ง username และขอปลดล็อกการเข้าใช้งาน</h2>';
+  html += '<p class="lead">สแกน QR ด้านล่าง หรือกดปุ่มเพื่อแอดเพื่อน แล้วพิมพ์ username ที่สมัครไว้ (<b>'+escapeHtml(auth.username)+'</b>) พร้อมส่งรูปสลิปโอนเงินในแชท เพื่อขอปลดล็อกการเข้าใช้งานได้เลย</p>';
+  html += '<div class="line-qr-wrap"><img src="'+LINE_OA_QR_DATA_URI+'" alt="LINE OA QR code" class="line-qr-img"></div>';
+  html += '<div class="start-bar" style="justify-content:center;">';
+  html += '<a class="btn line-add-btn" href="'+LINE_OA_URL+'" target="_blank" rel="noopener">➕ เพิ่มเพื่อน LINE OA</a>';
   html += '</div></div>';
 
   html += '<div class="card demo-teaser">';
