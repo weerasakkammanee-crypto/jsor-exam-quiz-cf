@@ -595,6 +595,16 @@ function renderAuthScreen(){
   html += '</div>';
   html += '</div>';
 
+  if(authState.mode==='register'){
+    html += '<div class="card line-unlock-card">';
+    html += '<h2>📌 หลังสมัครแล้ว: แอดไลน์เพื่อแจ้ง username และขอปลดล็อกการเข้าใช้งาน</h2>';
+    html += '<p class="lead">สแกน QR ด้านล่าง หรือกดปุ่มเพื่อแอดเพื่อน แล้วพิมพ์ username ที่สมัคร พร้อมส่งรูปสลิปโอนเงินในแชท เพื่อขอปลดล็อกการเข้าใช้งานได้เลย</p>';
+    html += '<div class="line-qr-wrap"><img src="'+LINE_OA_QR_DATA_URI+'" alt="LINE OA QR code" class="line-qr-img"></div>';
+    html += '<div class="start-bar" style="justify-content:center;">';
+    html += '<a class="btn line-add-btn" href="'+LINE_OA_URL+'" target="_blank" rel="noopener">➕ เพิ่มเพื่อน LINE OA</a>';
+    html += '</div></div>';
+  }
+
   html += '<div class="card demo-teaser">';
   html += '<h2>🎯 ยังไม่อยากสมัคร? ลองทำตัวอย่างฟรีก่อนได้</h2>';
   html += '<p class="lead">คัดมา '+DEMO.length+' ข้อ กระจายครบทุกวิชา ให้ลองทำเล่นๆ ก่อนตัดสินใจ (ไม่ต้องสมัครสมาชิก ไม่มีการบันทึกคะแนน)</p>';
@@ -674,13 +684,9 @@ function renderPendingApproval(){
   html += '<button class="btn primary" id="tryLoginAgainBtn">🔄 ลองเข้าสู่ระบบอีกครั้ง</button>';
   html += '</div></div>';
 
-  html += '<div class="card line-unlock-card">';
-  html += '<h2>📌 ขั้นตอนต่อไป: แอดไลน์เพื่อแจ้ง username และขอปลดล็อกการเข้าใช้งาน</h2>';
-  html += '<p class="lead">สแกน QR ด้านล่าง หรือกดปุ่มเพื่อแอดเพื่อน แล้วพิมพ์ username ที่สมัครไว้ (<b>'+escapeHtml(auth.username)+'</b>) พร้อมส่งรูปสลิปโอนเงินในแชท เพื่อขอปลดล็อกการเข้าใช้งานได้เลย</p>';
-  html += '<div class="line-qr-wrap"><img src="'+LINE_OA_QR_DATA_URI+'" alt="LINE OA QR code" class="line-qr-img"></div>';
-  html += '<div class="start-bar" style="justify-content:center;">';
-  html += '<a class="btn line-add-btn" href="'+LINE_OA_URL+'" target="_blank" rel="noopener">➕ เพิ่มเพื่อน LINE OA</a>';
-  html += '</div></div>';
+  html += '<div class="compare-box guest">';
+  html += '<div class="compare-line">📌 ถ้ายังไม่ได้แอดไลน์แจ้ง username กด <a href="'+LINE_OA_URL+'" target="_blank" rel="noopener" style="font-weight:800;color:var(--primary-dark);">เพิ่มเพื่อน LINE OA</a> แล้วพิมพ์ username ของคุณ (<b>'+escapeHtml(auth.username)+'</b>) พร้อมส่งรูปสลิปโอนเงินในแชท เพื่อขอปลดล็อกการเข้าใช้งาน</div>';
+  html += '</div>';
 
   html += '<div class="card demo-teaser">';
   html += '<h2>🎯 ระหว่างรอ ลองทำตัวอย่างฟรีไปก่อนได้</h2>';
