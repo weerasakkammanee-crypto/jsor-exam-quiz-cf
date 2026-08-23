@@ -1,5 +1,5 @@
 {
   "name": "jsor-exam-quiz-cf",
   "compatibility_date": "2026-08-23",
-  "assets": { "directory": "./" }
+  "assets": { "directory": "./public" }
 }
